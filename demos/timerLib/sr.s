@@ -16,7 +16,7 @@ get_sr:	mov r2, r12
 
 	.global or_sr
 or_sr:	nop
-	bis r12, r2
+	bis r12, r2; Logic-or'd into r2 the value in r12 where r2 is status register
 	nop
 	ret
 	

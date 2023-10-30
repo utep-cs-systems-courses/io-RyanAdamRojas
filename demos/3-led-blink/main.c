@@ -4,9 +4,9 @@
 #include "led.h"
 
 int main(void) {
-  P1DIR |= LEDS;
-  P1OUT &= ~LED_GREEN;
-  P1OUT |= LED_RED;
+    P1DIR |= LEDS;
+    P1OUT |= LED_GREEN;
+    P1OUT |= LED_RED;
 
   configureClocks();		/* setup master oscillator, CPU & peripheral clocks */
   enableWDTInterrupts();	/* enable periodic interrupt */
@@ -20,10 +20,21 @@ int secondCount = 0;
 void
 __interrupt_vec(WDT_VECTOR) WDT()	/* 250 interrupts/sec */
 {
-  secondCount ++;
-  if (secondCount >= 250) { 	/* once each sec... */
-    secondCount = 0;		/* reset count */
-    P1OUT ^= LED_GREEN;		/* toggle green LED */
-  }
-} 
-
+    // Interval between LED toggles, on...of...on... etc.
+    // '^=' XOR toggles
+    secondCount ++;
+    P1OUT ^= LED_RED;		     /* toggle green LED */
+    if (secondCount = 15) {  /* once each sec... */
+        P1OUT ^= LED_GREEN;        /* toggle green LED */
+        P1OUT ^= LED_RED;
+    }
+    if (secondCount = 30) {  /* once each sec... */
+        P1OUT ^= LED_GREEN;        /* toggle green LED */
+        P1OUT ^= LED_RED;
+     }
+    if (secondCount = 45) {  /* once each sec... */
+         P1OUT ^= LED_GREEN;        /* toggle green LED */
+         P1OUT ^= LED_RED;
+    }
+  secondCount = 0;		 /* reset count */
+}

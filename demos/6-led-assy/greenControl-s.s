@@ -9,7 +9,7 @@
 greenControl:
 	cmp #0, r12
 	jz off
-	bis #64, &P1OUT		;or
-	pop r0
-off:	and #~64, &P1OUT
-	pop r0
+	bis.b #GREEN, &P1OUT		;or
+	jmp done
+off:	and.b #~GREEN, &P1OUT
+done:	pop r0
