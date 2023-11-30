@@ -1,0 +1,1 @@
+void oncePerSecond(void);

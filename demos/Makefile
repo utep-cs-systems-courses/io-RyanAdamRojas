@@ -5,7 +5,7 @@ all:
 	(cd 3* && make)
 	(cd 4* && make)
 	(cd 5* && make)
-	(cd 6* && make)
+	#(cd 6* && make) # not working
 	(cd 7* && make)
 	(cd 8* && make)
 	(cd 9* && make)
